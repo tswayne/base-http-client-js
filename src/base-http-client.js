@@ -33,8 +33,11 @@ class BaseApiClient {
     try {
       const options = this.requestOptions({ url, query, body, method })
       const resp = await axios.request(options)
-      resp.data.status = resp.status
-      return resp.data
+      if (typeof resp.data === 'object') {
+        resp.data.status = resp.status
+        return resp.data
+      }
+      return resp
     } catch (error) {
       error.data = error.response.data
       throw error
