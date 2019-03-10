@@ -10,7 +10,7 @@ stages:
 
 before_script:
   - apt-get update -qq
-  - url_host=`git remote get-url origin | sed -e "s/https:\/\/gitlab-ci-token:.*@//g"`
+  - url_host=`git config remote.origin.url | sed -e "s/https:\/\/gitlab-ci-token:.*@//g"`
   - git remote set-url origin "https://gitlab-ci-token:${CI_JOB_TOKEN}@${url_host}"
   - git config --global user.email "swaynetyler@gmail.com"
   - yarn install --pure-lockfile
