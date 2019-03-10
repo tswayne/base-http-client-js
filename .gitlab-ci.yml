@@ -1,0 +1,16 @@
+image: node:10.9.0
+
+cache:
+  key: ${CI_JOB_NAME}
+  paths:
+    - node_modules/
+
+stages:
+  - build
+
+before_script:
+  - yarn install --pure-lockfile
+
+build:
+  stage: build
+  script: echo "BUILD"

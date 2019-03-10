@@ -1,5 +1,6 @@
 const axios = require('axios')
 const bindAll = require('class-bindall')
+const HttpError = require('./http-error')
 
 const defaultOptions = {
   application: null,
@@ -39,8 +40,7 @@ class BaseApiClient {
       }
       return resp
     } catch (error) {
-      error.data = error.response.data
-      throw error
+      throw new HttpError(error)
     }
   }
 
