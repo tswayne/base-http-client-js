@@ -22,6 +22,6 @@ build:
   script:
     - PACKAGE_VERSION=$(cat package.json | grep version | head -1  | awk -F":" '{ print $2 }' | sed 's/[\",]//g')
     - git tag -a $PACKAGE_VERSION -m $PACKAGE_VERSION
-    - git push --repo=git@gitlab.com:tv-tsb/tooling/js-base-http-client.git origin tag $PACKAGE_VERSION
+    - git push --repo=git@gitlab.com:tv-tsb/tooling/js-base-http-client.git --tags
   only:
     - master
