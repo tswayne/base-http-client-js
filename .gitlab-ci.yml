@@ -9,6 +9,7 @@ stages:
   - deploy
 
 before_script:
+  - git config --global user.email "deploy@tsb.com"
   - yarn install --pure-lockfile
 
 build:
