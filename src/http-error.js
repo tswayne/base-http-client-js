@@ -12,8 +12,11 @@ class HttpError extends Error{
       params: errorConfig.params
     }
 
+    this.headers = {}
+
     if (error.response) {
       this.status = error.response.status
+      this.headers = error.response.headers
       if (error.response.data) {
         this.message = error.response.data.message
         this.messages = error.response.data.messages

@@ -9,12 +9,9 @@ stages:
   - deploy
 
 before_script:
-  - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
-  - eval $(ssh-agent -s)
-  - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
-  - mkdir -p ~/.ssh
-  - chmod 700 ~/.ssh
-  - git config --global user.email "deploy@tsb.com"
+  - url_host=`git remote get-url origin | sed -e "s/https:\/\/gitlab-ci-token:.*@//g"`
+  - git remote set-url origin "https://gitlab-ci-token:${CI_JOB_TOKEN}@${url_host}"
+  - git config --global user.email "swaynetyler@gmail.com"
   - yarn install --pure-lockfile
 
 build:
