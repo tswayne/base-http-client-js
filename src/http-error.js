@@ -18,6 +18,7 @@ class HttpError extends Error{
       this.status = error.response.status
       this.headers = error.response.headers
       if (error.response.data) {
+        this.rawApiResponse = error.response.data
         this.message = error.response.data.message
         this.messages = error.response.data.messages
       } else {

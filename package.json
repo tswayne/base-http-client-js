@@ -1,6 +1,6 @@
 {
   "name": "http-client",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "base http client",
   "main": "index.js",
   "scripts": {
