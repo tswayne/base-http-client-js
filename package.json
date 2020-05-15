@@ -1,15 +1,29 @@
 {
-  "name": "http-client",
-  "version": "2.2.0",
-  "description": "base http client",
+  "name": "base-http-client",
+  "version": "1.0.0",
+  "description": "A simple object oriented http client",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tswayne/base-http-client-js.git"
+  },
+  "keywords": [
+    "rest",
+    "api",
+    "http",
+    "client"
+  ],
+  "homepage": "https://github.com/tswayne/base-http-client-js#readme",
+  "bugs": {
+    "url": "https://github.com/tswayne/base-http-client-js/issues"
+  },
+  "author": "tswayne",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.19.2",
     "class-bindall": "^1.0.0"
   }
 }

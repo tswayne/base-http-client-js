@@ -2,31 +2,30 @@
 class HttpError extends Error{
   constructor(error) {
     super()
-    const errorConfig = error.config ? error.config : {}
-    this.clientMessage = error.message
-    this.httpError = true
 
-    this.request = {
-      method: errorConfig.method,
-      url: errorConfig.url,
-      params: errorConfig.params
-    }
+    this.exception = error.message
+    this.request = this._parseRequest(error.config)
+    this.response = this._parseResponse(error.response)
+    this.message = this._parseMessage(error)
+    this.status = error.response ? error.response.status : null
 
-    this.headers = {}
+  }
 
+  _parseRequest(errorConfig={}) {
+    const { headers={}, url, method } = errorConfig
+    return { method,  url, headers }
+  }
+
+  _parseMessage(error) {
     if (error.response) {
-      this.status = error.response.status
-      this.headers = error.response.headers
-      if (error.response.data) {
-        this.rawApiResponse = error.response.data
-        this.message = error.response.data.message
-        this.messages = error.response.data.messages
-      } else {
-        this.message = error.response.statusText
-      }
-    } else {
-      this.message = error.message
+      return error.response.statusText
     }
+    return error.message
+  }
+
+  _parseResponse(errorResponse={}) {
+    const { headers={}, body={}, status } = errorResponse
+    return { headers, body, status }
   }
 }
 

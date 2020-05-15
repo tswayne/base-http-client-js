@@ -1,4 +1,5 @@
-const BaseHttpClient = require('./src/base-http-client')
+const HttpClient = require('./src/http-client')
 const HttpError = require('./src/http-error')
+const HttpResponse = require('./src/http-response')
 
-module.exports = { BaseHttpClient, HttpError }
+module.exports = { HttpClient, HttpError, HttpResponse }
