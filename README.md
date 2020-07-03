@@ -1,3 +1,5 @@
+[![npm](https://img.shields.io/npm/v/base-http-client.svg)](https://www.npmjs.com/package/base-http-client)
+
 # Base Http Client
 A simple, easy to use, object oriented http client
 
@@ -97,3 +99,6 @@ HttpError: {
   }
 }
 ```
+
+## Contributing
+Feel free to open issues or pull requests!
