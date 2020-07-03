@@ -42,12 +42,12 @@ console.log(`Yay response ${response.body}`)
 
 #### HttpClient methods
 All methods will return an HttpResponse or throw an HttpError  
-**get(path, query)** - makes http GET request 
-**post(path, body={}, query)** - makes http POST request
-**patch(path, query, body={})** - makes http PATCH request
-**put(path, query, body={})** - makes http PUT request
-**delete(path)** - makes http DELETE request
-**request({ url, query, body, method, requestOverrides={} })** - flexible http request method
+**get(path, query)** - makes http GET request   
+**post(path, body={}, query)** - makes http POST request  
+**patch(path, query, body={})** - makes http PATCH request  
+**put(path, query, body={})** - makes http PUT request  
+**delete(path)** - makes http DELETE request  
+**request({ url, query, body, method, requestOverrides={} })** - flexible http request method  
 
 * path: string, appended to the root url (`/myPath/obj/1`)
 * query: object, http query object converted to query string ({ foo: 'bar' } => '?foo=bar)
