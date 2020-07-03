@@ -1,4 +1,4 @@
-#Base Http Client
+# Base Http Client
 A simple, easy to use, object oriented http client
 
 ## Usage
