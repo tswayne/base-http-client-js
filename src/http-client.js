@@ -32,11 +32,13 @@ class HttpClient {
   }
 
   async request({ path, query, body, method, requestOverrides={} }) {
+    const { stack } = new Error()
     try {
       const options = this.requestOptions({ url: path, query, body, method, requestOverrides })
       const resp = await axios.request(options)
       return new HttpResponse(resp)
     } catch (error) {
+      error.stack = stack
       throw new HttpError(error)
     }
   }

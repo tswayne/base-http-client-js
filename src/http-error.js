@@ -1,14 +1,14 @@
 
 class HttpError extends Error{
   constructor(error) {
-    super()
+    super(error.message)
 
     this.exception = error.message
     this.request = this._parseRequest(error.config)
     this.response = this._parseResponse(error.response)
     this.message = this._parseMessage(error)
     this.status = error.response ? error.response.status : null
-
+    this.stack = error.stack
   }
 
   _parseRequest(errorConfig={}) {
