@@ -24,8 +24,8 @@ class HttpError extends Error{
   }
 
   _parseResponse(errorResponse={}) {
-    const { headers={}, body={}, status } = errorResponse
-    return { headers, body, status }
+    const { headers={}, data={}, status } = errorResponse
+    return { headers, body: data, status }
   }
 }
 
