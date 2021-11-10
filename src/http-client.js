@@ -15,9 +15,9 @@ class HttpClient {
     bindAll(this)
   }
 
-  requestOptions({ url, query, body, method, requestOverrides }) {
+  requestParams({ url, query, body, method, options={} }) {
     const { headerOptions, requestOptions } = this.baseOptions
-    const { headerOptionsOverrides, requestOptionsOverrides } = requestOverrides
+    const { headers: headerOptionsOverrides, request: requestOptionsOverrides } = options
 
     const headers = Object.assign({}, headerOptions, headerOptionsOverrides)
 
@@ -31,11 +31,11 @@ class HttpClient {
     }, requestOptionsOverrides)
   }
 
-  async request({ path, query, body, method, requestOverrides={} }) {
+  async request({ path, query, body, method, options={} }) {
     const { stack } = new Error()
     try {
-      const options = this.requestOptions({ url: path, query, body, method, requestOverrides })
-      const resp = await axios.request(options)
+      const requestParams = this.requestParams({ url: path, query, body, method, options })
+      const resp = await axios.request(requestParams)
       return new HttpResponse(resp)
     } catch (error) {
       error.stack = stack
@@ -43,24 +43,24 @@ class HttpClient {
     }
   }
 
-  async get(path, query) {
-    return this.request({ path, query, method: 'get'})
+  async get(path, query, options={}) {
+    return this.request({ path, query, method: 'get', options })
   }
 
-  async post(path, body={}, query) {
-    return this.request({ path, body, query, method: 'post'})
+  async post(path, body={}, query, options={}) {
+    return this.request({ path, body, query, method: 'post', options })
   }
 
-  async patch(path, query, body={}) {
-    return this.request({ path, body, query, method: 'patch'})
+  async patch(path, query, body={}, options={}) {
+    return this.request({ path, body, query, method: 'patch', options })
   }
 
-  async put(path, query, body={}) {
-    return this.request({ path, body, query, method: 'put'})
+  async put(path, query, body={}, options={}) {
+    return this.request({ path, body, query, method: 'put', options })
   }
 
-  async delete(path) {
-    return this.request({ path, method: 'delete'})
+  async delete(path, options={}) {
+    return this.request({ path, method: 'delete', options })
   }
 }
 
