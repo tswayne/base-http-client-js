@@ -59,8 +59,8 @@ class HttpClient {
     return this.request({ path, body, query, method: 'put', options })
   }
 
-  async delete(path, options={}) {
-    return this.request({ path, method: 'delete', options })
+  async delete(path, query, body={}, options={}) {
+    return this.request({ path, body, query, method: 'delete', options })
   }
 }
 
