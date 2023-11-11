@@ -23,7 +23,7 @@
   "author": "tswayne",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.27.2",
+    "axios": "^1.6.0",
     "class-bindall": "^1.0.0"
   }
 }
